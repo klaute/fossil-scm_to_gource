@@ -10,5 +10,5 @@ The fossil_rss_timeline_to_gource.py script is the fossil RSS timeline version (
 
 * Usage of the fossil_timeline_to_gource.py - script:
 
-      python fossil_to_source.py [fossil repository file name]
+      python fossil_timeline_to_gource.py [fossil repository file name]
 

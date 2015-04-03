@@ -1,4 +1,10 @@
 #!/bin/bash
+#
+# usage: ./convert.sh <fossil repository name> <video output file name>
+#
+# author: Kai Lauterbach - klaute@gmail.com
+# date: 2015-04-03
+#
 
 fossil timeline -n 99999 -v -R $1 > timeline.txt
 

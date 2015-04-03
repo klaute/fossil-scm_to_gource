@@ -9,5 +9,6 @@ Call the _test.sh_ script with a fossil file as parameter to show a sample gourc
 The fossil_rss_timeline_to_gource.py script is the fossil RSS timeline version (early alpha).
 
 * Usage of the fossil_timeline_to_gource.py - script:
+
       python fossil_to_source.py [fossil repository file name]
 

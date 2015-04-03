@@ -73,7 +73,7 @@ for line in lines:
     search4user = 0
     tstr = line.split(" ")
     #print "gne " + tstr[0]
-    tmpdata["user"] = tstr[0].replace(')', '')
+    tmpdata["user"] = tstr[0].replace(')', '').replace(".(none", "")
 
   if 1 == search4user:
     #print line
@@ -107,7 +107,7 @@ for line in lines:
   # add data to gource output data list
   if 1 == toadd:
     tstr = line.split(" ")
-    tstr[1] = tstr[1].replace("/", "//") # fix path name
+    #tstr[1] = tstr[1].replace("/", "//") # fix path name
     tmpdata["file"] = tstr[1]
 
     log.append(tmpdata)

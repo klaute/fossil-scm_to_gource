@@ -38,7 +38,6 @@ date_time =   "00:00:00" # time of commit
 date      = "0000-00-00" # date of commit
 
 search4user = 0
-getnextelement = 0
 
 for line in lines:
 
@@ -50,12 +49,11 @@ for line in lines:
                "type":       "M", # default file mode is modified
                "file":        "", # no default filename
                "user":        ""} # no default user
-    datekey = "0"
-    date = tstr[1] + " "
-    date_time = "00:00:00"
+    date        = tstr[1] + " " # remember the date string (day)
+    datekey     = "0"
+    date_time   = "00:00:00"
     #print "1:" + date
-    search4user    = 0
-    getnextelement = 0
+    search4user = 0
 
   # read time
   tmat =  re.match("(\d{2})[/:-](\d{2})[/:-](\d{2})", line)
@@ -75,19 +73,18 @@ for line in lines:
     search4user = 0
     tstr = line.split(" ")
     #print "gne " + tstr[0]
-    tmpdata["user"] = tstr[0]
+    tmpdata["user"] = tstr[0].replace(')', '')
 
   if 1 == search4user:
     #print line
     if "(user:" in line:
       tstr = line.split(" ")
-      #print tstr
 
       for tmp in tstr:
         if 2 == search4user:
-          search4user = 2
-          #print "tmp " + tmp
-          tmpdata["user"] = tmp
+          search4user = 0
+          #print "tmp " + tmp.replace(')', "")
+          tmpdata["user"] = tmp.replace(')', "")
 
         if "(user:" in tmp:
           search4user = 2
@@ -106,11 +103,13 @@ for line in lines:
   if line.startswith(MODIFIED_FILE_INDICATOR):
     toadd = 1
     tmpdata["type"] = "M"
-  # add data
+
+  # add data to gource output data list
   if 1 == toadd:
     tstr = line.split(" ")
     tstr[1] = tstr[1].replace("/", "//") # fix path name
     tmpdata["file"] = tstr[1]
+
     log.append(tmpdata)
 
 # print out the results

@@ -10,6 +10,7 @@ import sys
 import re
 import time
 import datetime
+import copy
 
 ###
 
@@ -106,11 +107,11 @@ for line in lines:
 
   # add data to gource output data list
   if 1 == toadd:
-    tstr = line.split(" ")
+    tstr = line.split(" ", 1) # Only one split
     #tstr[1] = tstr[1].replace("/", "//") # fix path name
     tmpdata["file"] = tstr[1]
 
-    log.append(tmpdata)
+    log.append(copy.deepcopy(tmpdata))
 
 # print out the results
 for tmpdata in reversed(log):

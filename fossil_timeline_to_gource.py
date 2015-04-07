@@ -85,7 +85,7 @@ for line in lines:
         if 2 == search4user:
           search4user = 0
           #print "tmp " + tmp.replace(')', "")
-          tmpdata["user"] = tmp.replace(')', "")
+          tmpdata["user"] = tmp.replace(')', '').replace(".(none", "")
 
         if "(user:" in tmp:
           search4user = 2
